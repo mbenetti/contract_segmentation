@@ -1,4 +1,4 @@
-# contract_segmentation
+# Contract_segmentation
 Script to segment contracts into clauses and build a tree of the sections and clauses
 
 ## The script can process: Unstructured supported file types:
