@@ -1,6 +1,6 @@
 # contract_segmentation
 Script to segment contracts into clauses and build a tree of the sections and clauses
 
-Result:
+## Results:
+![image](https://github.com/mbenetti/contract_segmentation/assets/27162948/d33c3be3-32f0-457f-ad76-61a9c65cdced)
 
-![image](https://github.com/mbenetti/contract_segmentation/assets/27162948/ed786b10-7a22-4ec1-b91b-b6f5877211f5)
