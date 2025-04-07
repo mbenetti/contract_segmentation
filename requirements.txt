@@ -1,0 +1,5 @@
+pandas
+unstructured
+tiktoken
+pdf4llm
+rich
