@@ -60,6 +60,12 @@ def extract_first_word(df):
     df['first_word'] = df['text'].apply(lambda x: ' '.join(x.split()[:1]))
     return df
 
+def extract_first_character(df):
+    # Apply a lambda function to the 'text' column
+    # Take the first character from the text
+    df['first_character'] = df['text'].apply(lambda x: x[0] if x else '')
+    return df
+
 def extract_first_two_words(df):
     # Apply a lambda function to the 'text' column
     # Split the text into a list of words
@@ -67,6 +73,12 @@ def extract_first_two_words(df):
     # Join the two words with a space
     # Assign the result to a new column 'first_two_words'
     df['first_two_words'] = df['text'].apply(lambda x: ' '.join(x.split()[:2]))
+    return df
+
+def extract_first_two_characters(df):
+    # Apply a lambda function to the 'text' column
+    # Take the first two characters from the text
+    df['first_two_characters'] = df['text'].apply(lambda x: x[:2] if x else '')
     return df
 
 def extract_first_three_words(df):
@@ -345,6 +357,8 @@ def merge_p_with_previous_level(df):
 def base_processing(file_path, H1s, H2s, H3s):
     # Preparation stage
     df_from_text = process_file(file_path)
+    df_from_text = extract_first_character(df_from_text)
+    df_from_text = extract_first_two_characters(df_from_text)
     df_from_text = extract_first_word(df_from_text)
     df_from_text = extract_first_two_words(df_from_text)
     df_from_text = extract_first_three_words(df_from_text)
