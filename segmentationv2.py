@@ -8,6 +8,8 @@ from unstructured.cleaners.core import clean_non_ascii_chars
 from unstructured.cleaners.core import group_broken_paragraphs
 import pandas as pd
 
+
+
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     """
     Returns the number of tokens in a text string.
@@ -119,7 +121,7 @@ def update_elements(df, H1s, H2s, H3s):
     # Iterate over each row in the DataFrame
     import string  # Import string module (already imported at the top)
     for i, row in df.iterrows():
-        text = row['first_two_words']
+        text = row['first_two_characters']
         # Check if the first word matches any H3 element
         for h3 in H3s:
             if h3 in text:
