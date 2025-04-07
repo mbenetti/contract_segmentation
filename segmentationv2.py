@@ -29,7 +29,7 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
     num_tokens = len(encoding.encode(string))
     return num_tokens
     
-def process_file(file_name):
+def process_file_unstructured(file_name):
     """
     This function takes a file name as input, processes the file using the unstructured library,
     and returns a pandas DataFrame with the cleaned text.
@@ -51,6 +51,22 @@ def process_file(file_name):
     
     # Group broken paragraphs together
     df_from_text['text'] = df_from_text['text'].apply(group_broken_paragraphs)
+    
+    return df_from_text
+
+def process_file_pdf4llm(file_name):
+    """
+    This function takes a file name as input, processes the file using the unstructured library,
+    and returns a pandas DataFrame with the cleaned text.
+    """    
+    import pdf4llm
+
+    md_text = pdf4llm.to_markdown(file_name)
+    # Split the markdown text into lines
+    lines = md_text.split('\n')
+
+    # Create a DataFrame with one line per row
+    df_from_text = pd.DataFrame(lines, columns=['text'])
     
     return df_from_text
 
@@ -358,7 +374,9 @@ def merge_p_with_previous_level(df):
 
 def base_processing(file_path, H1s, H2s, H3s):
     # Preparation stage
-    df_from_text = process_file(file_path)
+    
+    # df_from_text = process_file_unstructured(file_path)
+    df_from_text = process_file_pdf4llm(file_path)
     df_from_text = extract_first_character(df_from_text)
     df_from_text = extract_first_two_characters(df_from_text)
     df_from_text = extract_first_word(df_from_text)

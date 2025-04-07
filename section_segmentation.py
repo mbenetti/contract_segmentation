@@ -39,3 +39,5 @@ df = merge_p_with_previous_level(df)
 pretty_print(df)
 
 
+
+# %%
